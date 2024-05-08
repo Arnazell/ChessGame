@@ -2,17 +2,22 @@
 #include "MainLoop.h"
 #include "SFML_manager.h"
 #include "Game.h"
+#include "Assets.h"
 
 void Chess::run()
 {
     //NOTATKA: BEDZIEMY PRZEKAZYWALI DO KAZDEJ FIGURY WSKAZNIK DO NIEGO, GDYZ WTEDY BEDA ONE MIALY DOSTEP DO OKNA I BEDA MOGLY SIE NARYSOWAC!
 	
+    // Zarzadzanie danym
+    Assets assets;
+    assets.init();
+    
     // Zarzadzanie sfml
 	SFML_manager graphics;
     graphics.init();
 
     // Zarzadzanie gra
-    Game game(&graphics);
+    Game game(&graphics, &assets);
 
 	// Stan gry
 	bool quit = false;

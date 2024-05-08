@@ -2,13 +2,20 @@
 #include "SFML_manager.h"	
 #include "Figure.h"
 #include "Pawn.h"
-#include "Bishop.h"
+#include "Assets.h"
 #include <vector>
+
+
+// -------------------------------------------------------------------------------------------------------
+// klasa zarzadzajaca gr¹
+// -------------------------------------------------------------------------------------------------------
+
+
 class Game
 {
 public:
 	// Konstruktor
-	Game(SFML_manager* graphics);
+	Game(SFML_manager* graphics, Assets* resources);
 	// Destruktor
 	//~Game();
 
@@ -27,7 +34,9 @@ private:
 	// Dostep do grafiki
 	SFML_manager* graphics;
 
-	// 
+	// Dostep do zasobow
+	Assets* resources;
+
 	// Wektor ze wskaznikami na figury
 	std::vector<Figure*> pieces;
 	// Plansza - przechowuje 
@@ -52,6 +61,4 @@ private:
 	Pawn P7;
 	Pawn P8;
 
-	Bishop b1;
-	Bishop b2;
 };
