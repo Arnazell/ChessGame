@@ -1,13 +1,10 @@
 #include <iostream>
-#include "Pawn.h"
+#include "Bishop.h"
 
-
-// Notatka: wiele razy ładujemy tą samą teksturę;)
-
-Pawn::Pawn(Team team, int xind, int yind, SFML_manager* graphics)
-	: Figure(team, xind, yind, PAWN, graphics)
+Bishop::Bishop(Team team, int xind, int yind, SFML_manager* graphics)
+	: Figure(team, xind, yind, BISHOP, graphics)
 {
-	
+
 	std::string fileToLoad;
 
 	// stworzenie prostokata
@@ -19,22 +16,24 @@ Pawn::Pawn(Team team, int xind, int yind, SFML_manager* graphics)
 	// �adowanie tekstury
 	if (m_team == BLACK)
 	{
-		fileToLoad = "Res/black-pawn.png";
+		fileToLoad = "Res/black-bishop.png";
 	}
 	else
 	{
-		fileToLoad = "Res/white-pawn.png";
+		fileToLoad = "Res/white-bishop.png";
 	}
 	m_texture.loadFromFile(fileToLoad);
+
+	
 
 
 	// inicjalizacja spritea
 	m_sprite.setTextureRect(m_Rect);
 	m_sprite.setTexture(m_texture);
-	m_sprite.setPosition(xind * SIZE, yind * SIZE);
+	m_sprite.setPosition(xind*SIZE, yind*SIZE);
 }
 
-void Pawn::draw() 
+void Bishop::draw()
 {
 	graphics->window.draw(m_sprite);
 }

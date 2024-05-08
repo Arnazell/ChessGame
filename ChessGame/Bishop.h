@@ -3,11 +3,11 @@
 
 #include <string>
 
-class Pawn : public Figure
+class Bishop : public Figure
 {
 public:
     // Konstruktor
-    Pawn(Team team, int xIND, int yIND, SFML_manager* graphics);
+    Bishop(Team team, int xpos, int ypos, SFML_manager* graphics);
 
     // Draw
     void draw();

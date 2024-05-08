@@ -4,8 +4,8 @@
 // --------------------------------------------------------------------------------------
 // Konstruktor
 // --------------------------------------------------------------------------------------
-Figure::Figure(Team team, unsigned int xpos, unsigned int ypos, PieceType type)
-	: m_team(team), m_xpos(xpos), m_ypos(ypos), m_type(type)
+Figure::Figure(Team team, int xind, int yind, PieceType type, SFML_manager* graphics)
+	: m_team(team), m_xind(xind), m_yind(yind), m_type(type), graphics(graphics)
 {
 
 }

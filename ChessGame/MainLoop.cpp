@@ -1,7 +1,7 @@
 #include <iostream>
 #include "MainLoop.h"
 #include "SFML_manager.h"
-
+#include "Game.h"
 
 void Chess::run()
 {
@@ -11,13 +11,16 @@ void Chess::run()
 	SFML_manager graphics;
     graphics.init();
 
+    // Zarzadzanie gra
+    Game game(&graphics);
+
 	// Stan gry
 	bool quit = false;
 
     // Glowna petla
 	while (!quit)
 	{
-        // Sprawdzenie zdarzeñ
+        // Obsluga zdarzeñ
         sf::Event event;
         while (graphics.window.pollEvent(event))
         {
@@ -25,9 +28,16 @@ void Chess::run()
                 quit = true;
         }
 
+        // Czyszczenie okna
         graphics.window.clear(sf::Color::White);
 
-        // Wyswietlani
+        // aktualizacja
+        game.update();
+
+        // Rysowanie figur
+        game.draw_figures();
+
+        // Wyswietlenie wszyskiego na ekranie
         graphics.window.display();
 	}
 }

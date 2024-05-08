@@ -11,8 +11,8 @@ class SFML_manager
 {
 public:
 	// Screen seetings
-	const int SCREEN_WIDTH = 800;
-	const int SCREEN_HEIGHT = 800;
+	const int SCREEN_WIDTH = 1024;
+	const int SCREEN_HEIGHT = 1024;
 	const char* APPNAME = "Chess2024";
 
 	// Framerate
@@ -24,6 +24,4 @@ public:
 	// Inicjalizuje okno
 	void init();
 
-	// £aduje teksture
-	void loadTexture(const char* filename);
 };

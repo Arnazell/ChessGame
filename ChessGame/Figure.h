@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include "SFML_manager.h"
 
 // --------------------------------------------------------------------------------------
 // Figura - klasa bazowa z ktorej dziedziczy kazda z figur szachowych
@@ -10,18 +10,27 @@ class Figure : public sf::Sprite
 {
 public:
 
+	const int SIZE = 128;
+
 	enum Team { BLACK, WHITE, NONE };
 
 	enum PieceType { PAWN, ROOK, KNIGHT, BISHOP, KING, QUEEN, EMPTY };
 
 	enum MoveType { NORMAL, CASTLE, ENPASSANT, NEWPIECE, INIT };
 
+
 	// Konstruktor
-	Figure(Team team, unsigned int xpos, unsigned int ypos, PieceType type);
+	Figure(Team team, int xind, int yind, PieceType type, SFML_manager* graphics);
 
 	// Destruktor
 
+	// Wyswietlanie
+	virtual void draw() = 0;
+
 protected:
+
+	// Dostep do grafiki
+	SFML_manager* graphics;
 	// Druzyna
 	Team m_team;
 
@@ -29,17 +38,19 @@ protected:
 	PieceType m_type;
 
 	// Pozycja na mapie
-	unsigned int m_xpos;
-	unsigned int m_ypos;
+	unsigned int m_xind;
+	unsigned int m_yind;
 
-	// Teksruta figury
-	sf::Texture m_Texture;
+	// Ograz figury
+	sf::Texture m_texture;
+
+	// Sptire
+	sf::Sprite m_sprite;
 
 	// Zajmowany obszar
 	sf::IntRect m_Rect;
 
-	// 
-	// Przestrzen mozliwych ruchow
+
 
 
 
