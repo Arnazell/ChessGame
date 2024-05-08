@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "SFML_manager.h"
+#include "Assets.h"
 
 // --------------------------------------------------------------------------------------
 // Figura - klasa bazowa z ktorej dziedziczy kazda z figur szachowych
-//
 // --------------------------------------------------------------------------------------
+
 class Figure : public sf::Sprite
 {
 public:
@@ -20,7 +21,7 @@ public:
 
 
 	// Konstruktor
-	Figure(Team team, int xind, int yind, PieceType type, SFML_manager* graphics);
+	Figure(Team team, int xind, int yind, PieceType type, SFML_manager* graphics, Assets* resources);
 
 	// Destruktor
 
@@ -31,6 +32,9 @@ protected:
 
 	// Dostep do grafiki
 	SFML_manager* graphics;
+
+	// Dostep do zasobow
+	Assets* resources;
 	// Druzyna
 	Team m_team;
 

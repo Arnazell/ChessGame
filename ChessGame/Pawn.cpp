@@ -4,8 +4,8 @@
 
 // Notatka: wiele razy ładujemy tą samą teksturę;)
 
-Pawn::Pawn(Team team, int xind, int yind, SFML_manager* graphics)
-	: Figure(team, xind, yind, PAWN, graphics)
+Pawn::Pawn(Team team, int xind, int yind, SFML_manager* graphics, Assets* resources)
+	: Figure(team, xind, yind, PAWN, graphics, resources)
 {
 	
 	std::string fileToLoad;
@@ -16,25 +16,23 @@ Pawn::Pawn(Team team, int xind, int yind, SFML_manager* graphics)
 	m_Rect.width = SIZE;
 	m_Rect.height = SIZE;
 
-	// �adowanie tekstury
+	// inicjalizacja sprite
+	this->setTextureRect(sf::IntRect(0, 0, SIZE, SIZE));
+	this->setPosition(xind * SIZE, yind * SIZE);
+
+	// wybor tekstury
 	if (m_team == BLACK)
 	{
-		fileToLoad = "Res/black-pawn.png";
+		this->setTexture(resources->texture_pawn_black);
 	}
 	else
 	{
-		fileToLoad = "Res/white-pawn.png";
+		this->setTexture(resources->texture_pawn_white);
 	}
-	m_texture.loadFromFile(fileToLoad);
 
-
-	// inicjalizacja spritea
-	m_sprite.setTextureRect(m_Rect);
-	m_sprite.setTexture(m_texture);
-	m_sprite.setPosition(xind * SIZE, yind * SIZE);
 }
 
 void Pawn::draw() 
 {
-	graphics->window.draw(m_sprite);
+	graphics->window.draw(*this);
 }
