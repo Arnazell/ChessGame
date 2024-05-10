@@ -9,7 +9,5 @@ public:
     // Konstruktor
     Pawn(Team team, int xIND, int yIND, SFML_manager* graphics, Assets* resources);
 
-    // Draw
-    void draw();
     sf::Texture loaded;
 };

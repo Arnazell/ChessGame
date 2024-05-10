@@ -53,5 +53,8 @@ void Game::draw_board()
 
 void Game::update()
 {
-	return;
+	for (auto piece : pieces)
+	{
+		piece->update();
+	}
 }

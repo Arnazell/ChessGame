@@ -26,7 +26,16 @@ public:
 	// Destruktor
 
 	// Wyswietlanie
-	virtual void draw() = 0;
+	virtual void draw();
+
+	// aktualizowanie
+	virtual void update();
+
+	// Interakcja
+	void on_click();
+	bool clicked = false;
+
+
 
 protected:
 
@@ -45,18 +54,7 @@ protected:
 	unsigned int m_xind;
 	unsigned int m_yind;
 
-	// Ograz figury
+	// Obraz
 	sf::Texture m_texture;
-
-	// Sptire
-	sf::Sprite m_sprite;
-
-	// Zajmowany obszar
-	sf::IntRect m_Rect;
-
-
-
-
-
 
 };

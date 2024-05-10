@@ -37,6 +37,7 @@ void Chess::run()
         graphics.window.clear(sf::Color::White);
 
         // aktualizacja
+        graphics.update();
         game.update();
 
         // Rysowanie figur

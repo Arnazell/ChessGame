@@ -13,7 +13,7 @@ void Assets::init()
 void Assets::textureLoad() 
 {
 	texture_pawn_white.loadFromFile("Res/white-pawn.png");
-	texture_pawn_black.loadFromFile("Res/black-pawn.png");
+	texture_pawn_black.loadFromFile("Res/black-pawn.jpg");
 
 	texture_rook_white.loadFromFile("Res/white-rook.png");
 	texture_rook_black.loadFromFile("Res/black-rook.png");

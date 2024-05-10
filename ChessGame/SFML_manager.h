@@ -21,7 +21,16 @@ public:
 	//  Okno 
 	sf::RenderWindow window;
 
+	// Pozycja myszy
+	sf::Vector2i mousePosition;
+
 	// Inicjalizuje okno
 	void init();
+
+	// Update
+	void update();
+	
+	// Zmienia jasnosc tekstury
+	void setBrightnes(sf::Texture& texture, float factor);
 
 };
