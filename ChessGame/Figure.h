@@ -2,10 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include "SFML_manager.h"
 #include "Assets.h"
+#include "Board.h"
 
 // --------------------------------------------------------------------------------------
 // Figura - klasa bazowa z ktorej dziedziczy kazda z figur szachowych
 // --------------------------------------------------------------------------------------
+
+class Board;
 
 class Figure : public sf::Sprite
 {
@@ -21,7 +24,7 @@ public:
 
 
 	// Konstruktor
-	Figure(Team team, int xind, int yind, PieceType type, SFML_manager* graphics, Assets* resources);
+	Figure(Team team, int xind, int yind, PieceType type, SFML_manager* graphics, Assets* resources, Board* board);
 
 	// Destruktor
 
@@ -44,6 +47,10 @@ protected:
 
 	// Dostep do zasobow
 	Assets* resources;
+
+	// Dostep do planszy
+	Board* board;
+
 	// Druzyna
 	Team m_team;
 

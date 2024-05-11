@@ -3,6 +3,7 @@
 #include "Figure.h"
 #include "Pawn.h"
 #include "Assets.h"
+#include "Board.h"
 #include <vector>
 
 
@@ -15,17 +16,12 @@ class Game
 {
 public:
 	// Konstruktor
-	Game(SFML_manager* graphics, Assets* resources);
+	Game(SFML_manager* graphics, Assets* resources, Board* board);
 	// Destruktor
 	//~Game();
 
-	// Rodzaje figur
-
 	// Drukuj figury
 	void draw_figures();
-
-	// Drukuj plansze
-	void draw_board();
 
 	// Uaktualij gre
 	void update();
@@ -36,6 +32,9 @@ private:
 
 	// Dostep do zasobow
 	Assets* resources;
+
+	// Dostep do planszy
+	Board* board;
 
 	// Wektor ze wskaznikami na figury
 	std::vector<Figure*> pieces;

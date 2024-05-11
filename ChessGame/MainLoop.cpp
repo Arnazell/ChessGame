@@ -1,8 +1,11 @@
+#pragma once
+
 #include <iostream>
 #include "MainLoop.h"
 #include "SFML_manager.h"
 #include "Game.h"
 #include "Assets.h"
+#include "Board.h"
 
 void Chess::run()
 {
@@ -16,8 +19,12 @@ void Chess::run()
 	SFML_manager graphics;
     graphics.init();
 
+    // Zarzadzanie plansza
+    Board board(&graphics);
+
     // Zarzadzanie gra
-    Game game(&graphics, &assets);
+    Game game(&graphics, &assets, &board);
+
 
 	// Stan gry
 	bool quit = false;

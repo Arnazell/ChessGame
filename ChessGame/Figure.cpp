@@ -4,9 +4,11 @@
 // --------------------------------------------------------------------------------------
 // Konstruktor
 // --------------------------------------------------------------------------------------
-Figure::Figure(Team team, int xind, int yind, PieceType type, SFML_manager* graphics, Assets* resources)
-	: m_team(team), m_xind(xind), m_yind(yind), m_type(type), graphics(graphics), resources(resources)
+Figure::Figure(Team team, int xind, int yind, PieceType type, SFML_manager* graphics, Assets* resources, Board* board)
+	: m_team(team), m_xind(xind), m_yind(yind), m_type(type), graphics(graphics), resources(resources), board(board)
 {
+	// Umieszczenie figury na planszy
+	board->board_state[xind + yind * 8] = this;
 }
 
 void Figure::draw()
