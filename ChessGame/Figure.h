@@ -4,12 +4,13 @@
 #include "Assets.h"
 #include "Board.h"
 
-// --------------------------------------------------------------------------------------
-// Figura - klasa bazowa z ktorej dziedziczy kazda z figur szachowych
-// --------------------------------------------------------------------------------------
 
 class Board;
 
+
+// --------------------------------------------------------------------------------------
+// Figura - klasa bazowa z ktorej dziedziczy kazda z figur szachowych
+// --------------------------------------------------------------------------------------
 class Figure : public sf::Sprite
 {
 public:
@@ -34,10 +35,17 @@ public:
 	// aktualizowanie
 	virtual void update();
 
+	// generowanie ruchow
+	virtual void generate_move_space() = 0;
+	
+	// drukowanie ruchow
+	void print_moves();
 	// Interakcja
-	void on_click();
-	bool clicked = false;
+	void click();
+	void unclick();
 
+	bool clicked;
+	
 
 
 protected:
@@ -60,6 +68,9 @@ protected:
 	// Pozycja na mapie
 	unsigned int m_xind;
 	unsigned int m_yind;
+
+	// przestrzen ruchow
+	std::vector<sf::Vector2i> m_movement_space;
 
 	// Obraz
 	sf::Texture m_texture;

@@ -26,6 +26,9 @@ public:
 	// Uaktualij gre
 	void update();
 
+	// Wybierz figure
+	void select_figure();
+
 private:
 	// Dostep do grafiki
 	SFML_manager* graphics;
@@ -36,9 +39,8 @@ private:
 	// Dostep do planszy
 	Board* board;
 
-	// Wektor ze wskaznikami na figury
-	std::vector<Figure*> pieces;
-	// Plansza - przechowuje 
+	// Wybrana figura
+	Figure* selected;
 	
 
 	// Figury

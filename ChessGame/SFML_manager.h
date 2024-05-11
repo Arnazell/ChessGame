@@ -24,6 +24,16 @@ public:
 	// Pozycja myszy
 	sf::Vector2i mousePosition;
 
+	// Wcisniecie LPM
+	bool mousePressedLPM;
+
+	// Flaga pomagajaca obsluzyc klikniecie
+	bool LPMblocked;
+
+	// Klikniecie
+	bool LPMclick;
+
+
 	// Inicjalizuje okno
 	void init();
 

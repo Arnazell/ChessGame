@@ -8,11 +8,31 @@ void SFML_manager::init()
 {
 	window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), APPNAME);
 	window.setFramerateLimit(60);
+    LPMblocked = false;
 }
 
 void SFML_manager::update()
 {
     mousePosition = sf::Mouse::getPosition(window);
+    mousePressedLPM = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+
+    // Jesli mysz jest kliknieta
+    if (mousePressedLPM)
+    {
+        // Gdy nie bylo wczesniej klikniecie
+        if (!LPMblocked)
+        {
+            LPMclick = true;
+            LPMblocked = true;
+        }
+        else LPMclick = false;
+    }
+    else
+    {
+        LPMclick = false;
+        LPMblocked = false;
+    }
+        
 }
 
 void SFML_manager::setBrightnes(sf::Texture& texture, float factor)

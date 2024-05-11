@@ -1,8 +1,9 @@
 #include "Game.h"
+#include <iostream>
 
 Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
-	:graphics(graphics), resources(resources), board(board),
-	p1(Pawn(Figure::BLACK, 0, 1, graphics, resources, board)),
+	:graphics(graphics), resources(resources), board(board), selected(nullptr),
+	p1(Pawn(Figure::BLACK, 0, 4, graphics, resources, board)),
 	p2(Pawn(Figure::BLACK, 1, 1, graphics, resources, board)),
 	p3(Pawn(Figure::BLACK, 2, 1, graphics, resources, board)),
 	p4(Pawn(Figure::BLACK, 3, 1, graphics, resources, board)),
@@ -20,28 +21,20 @@ Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
 	P7(Pawn(Figure::WHITE, 6, 6, graphics, resources, board)),
 	P8(Pawn(Figure::WHITE, 7, 6, graphics, resources, board))
 {
-	pieces.push_back(&p1);
-	pieces.push_back(&p2);
-	pieces.push_back(&p3);
-	pieces.push_back(&p4);
-	pieces.push_back(&p5);
-	pieces.push_back(&p6);
-	pieces.push_back(&p7);
-
-	pieces.push_back(&P1);
-	pieces.push_back(&P2);
-	pieces.push_back(&P3);
-	pieces.push_back(&P4);
-	pieces.push_back(&P5);
-	pieces.push_back(&P6);
-	pieces.push_back(&P7);
-
 }
 
 void Game::draw_figures()
 {
+	// drukowanie planszy
 	board->drawBoard();
 	
+	// drukowanie mozliwych ruchow
+	if (selected)
+	{
+		selected->print_moves();
+	}
+
+	// drukowanie figur
 	for (auto field : board->board_state)
 	{
 		if (field)
@@ -50,11 +43,38 @@ void Game::draw_figures()
 		}
 	}
 }
-
+void Game::select_figure()
+{
+	auto position = graphics->mousePosition;
+	int xind = position.x / 128;
+	int yind = position.y / 128;
+	// jesli myszka wskazuje na jakas figure
+	if ((xind < 8) && (yind < 8))
+	{
+		selected = board->board_state[xind + yind * 8];
+		std::cout << "Xind: " << xind << "Yind: " << yind << "\n";
+	}
+}
 void Game::update()
 {
-	for (auto piece : pieces)
+	// jesli zaden pionek nie zostal wybrany
+	if (!selected)
 	{
-		piece->update();
+		// w przypadku klikniecia go wybierz
+		if (graphics->LPMclick)
+		{
+			select_figure();
+			if(selected) selected->click();
+		}
+	}
+	else
+	{
+		// Gdy gracz kliknie to zmien wybor
+		if (graphics->LPMclick)
+		{
+			selected->unclick();
+			select_figure();
+			if (selected) selected->click();
+		}
 	}
 }

@@ -18,16 +18,20 @@ Board::Board(SFML_manager* graphics)
 void Board::drawBoard()
 {
     bool isWhite = true;
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 8; ++i) 
+    {
         isWhite = !isWhite;
-        for (int j = 0; j < 8; ++j) {
+        for (int j = 0; j < 8; ++j) 
+        {
             sf::RectangleShape tile(sf::Vector2f(tileSize, tileSize));
             tile.setPosition(j * tileSize, i * tileSize);
 
-            if (isWhite) {
+            if (isWhite) 
+            {
                 tile.setFillColor(sf::Color(255, 206, 158)); // bia³e pole
             }
-            else {
+            else 
+            {
                 tile.setFillColor(sf::Color(209, 139, 71)); // czarne pole
             }
 
