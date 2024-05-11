@@ -34,16 +34,16 @@ void Pawn::generate_move_space()
 		// generuj ruchy dla czarnych pionkow
 		if (m_yind < 7)
 		{
+			// sprawdz czy mozna isc 1 w dol
 			if (board->board_state[m_xind + (m_yind + 1) * 8] == nullptr)
 			{
 				m_movement_space.emplace_back(m_xind, m_yind + 1);
-			}
-		}
-		if (m_yind < 6)
-		{
-			if (board->board_state[m_xind + (m_yind + 2) * 8] == nullptr)
-			{
-				m_movement_space.emplace_back(m_xind, m_yind + 2);
+
+				// jesli tak to sprawdz czy mozna isc dwa
+				if (board->board_state[m_xind + (m_yind + 2) * 8] == nullptr)
+				{
+					m_movement_space.emplace_back(m_xind, m_yind + 2);
+				}
 			}
 		}
 	}
@@ -53,16 +53,135 @@ void Pawn::generate_move_space()
 		// generuj ruchy dla bialych pionkow
 		if (m_yind > 0)
 		{
+			// sprawdz czy mozna isc 1 w gore
 			if (board->board_state[m_xind + (m_yind - 1) * 8] == nullptr)
 			{
 				m_movement_space.emplace_back(m_xind, m_yind - 1);
+
+				// jesli tak to sprawdz czy mozna isc 1 w dol
+				if (board->board_state[m_xind + (m_yind - 2) * 8] == nullptr)
+				{
+					m_movement_space.emplace_back(m_xind, m_yind - 2);
+				}
 			}
 		}
-		if (m_yind > 1)
+	}
+
+	// wygeneruj mozliwe ataki
+	ganerate_attack_space();
+}
+
+void Pawn::ganerate_attack_space()
+{
+	m_attack_space.clear();
+	// Ataki bialych
+	if (this->m_team == BLACK)
+	{
+		// gdy pionek jest po lewej
+		if ((m_xind == 0) && (m_yind > 0))
 		{
-			if (board->board_state[m_xind + (m_yind - 2) * 8] == nullptr)
+			// jesli jakas figura jest w polu ataki
+			if (board->board_state[(m_xind + 1) + (m_yind + 1) * 8])
 			{
-				m_movement_space.emplace_back(m_xind, m_yind - 2);
+				// i jesli jest z przeciwnej druzyny
+				if (1)//board->board_state[(m_xind + 1) + (m_yind + 1) * 8]->m_team != this->m_team)
+				{
+					m_attack_space.emplace_back(m_xind + 1, m_yind + 1);
+				}
+			}
+		}
+
+		// gdy pionek jest po prawej
+		if ((m_xind == 7) && (m_yind > 0))
+		{
+			// jesli jakas figura jest w polu ataki
+			if (board->board_state[(m_xind - 1) + (m_yind + 1) * 8])
+			{
+				// i jesli jest z przeciwnej druzyny
+				if (board->board_state[(m_xind - 1) + (m_yind + 1) * 8]->m_team != this->m_team)
+				{
+					m_attack_space.emplace_back(m_xind - 1, m_yind + 1);
+				}
+			}
+		}
+
+		// gdy pionek jest na srodku
+		if ((m_xind > 0) && (m_xind < 8) && (m_yind > 0))
+		{
+			// sprawdz atak na prawe pole
+			if (board->board_state[(m_xind + 1) + (m_yind + 1) * 8])
+			{
+				// i jesli jest z przeciwnej druzyny
+				if (board->board_state[(m_xind + 1) + (m_yind + 1) * 8]->m_team != this->m_team)
+				{
+					m_attack_space.emplace_back(m_xind + 1, m_yind + 1);
+				}
+			}
+
+			// sprawdz atak na lewe pole
+			if (board->board_state[(m_xind - 1) + (m_yind + 1) * 8])
+			{
+				// i jesli jest z przeciwnej druzyny
+				if (board->board_state[(m_xind - 1) + (m_yind + 1) * 8]->m_team != this->m_team)
+				{
+					m_attack_space.emplace_back(m_xind - 1, m_yind + 1);
+				}
+			}
+		}
+	}
+		
+	// Ataki czarnych
+	else if (this->m_team == WHITE)
+	{
+		// gdy pionek jest po lewej
+		if ((m_xind == 0) && (m_yind < 7))
+		{
+			// jesli jakas figura jest w polu ataki
+			if (board->board_state[(m_xind + 1) + (m_yind - 1) * 8])
+			{
+				// i jesli jest z przeciwnej druzyny
+				if (board->board_state[(m_xind + 1) + (m_yind - 1) * 8]->m_team != this->m_team)
+				{
+					m_attack_space.emplace_back(m_xind + 1, m_yind - 1);
+				}
+			}
+		}
+
+		// gdy pionek jest po prawej
+		if ((m_xind == 7) && (m_yind < 7))
+		{
+			// jesli jakas figura jest w polu ataki
+			if (board->board_state[(m_xind - 1) + (m_yind - 1) * 8])
+			{
+				// i jesli jest z przeciwnej druzyny
+				if (board->board_state[(m_xind - 1) + (m_yind - 1) * 8]->m_team != this->m_team)
+				{
+					m_attack_space.emplace_back(m_xind - 1, m_yind - 1);
+				}
+			}
+		}
+
+		// gdy pionek jest na srodku
+		if ((m_xind > 0) && (m_xind < 8) && (m_yind < 7))
+		{
+			// sprawdz atak na prawe pole
+			if (board->board_state[(m_xind + 1) + (m_yind - 1) * 8])
+			{
+				// i jesli jest z przeciwnej druzyny
+				if (board->board_state[(m_xind + 1) + (m_yind - 1) * 8]->m_team != this->m_team)
+				{
+					m_attack_space.emplace_back(m_xind + 1, m_yind - 1);
+				}
+			}
+
+			// sprawdz atak na lewe pole
+			if (board->board_state[(m_xind - 1) + (m_yind - 1) * 8])
+			{
+				// i jesli jest z przeciwnej druzyny
+				if (board->board_state[(m_xind - 1) + (m_yind - 1) * 8]->m_team != this->m_team)
+				{
+					m_attack_space.emplace_back(m_xind - 1, m_yind - 1);
+				}
 			}
 		}
 	}

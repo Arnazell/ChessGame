@@ -13,6 +13,9 @@ public:
     // Generowanie przestrzeni ruchow
     void generate_move_space() override;
 
+    // Generowanie przestrzeni atakow: ciezka sprawa tylko w przypadku pionka
+    void ganerate_attack_space();
+
 
     sf::Texture loaded;
 };

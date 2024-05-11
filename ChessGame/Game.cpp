@@ -3,7 +3,7 @@
 
 Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
 	:graphics(graphics), resources(resources), board(board), selected(nullptr),
-	p1(Pawn(Figure::BLACK, 0, 4, graphics, resources, board)),
+	p1(Pawn(Figure::BLACK, 1, 5, graphics, resources, board)),
 	p2(Pawn(Figure::BLACK, 1, 1, graphics, resources, board)),
 	p3(Pawn(Figure::BLACK, 2, 1, graphics, resources, board)),
 	p4(Pawn(Figure::BLACK, 3, 1, graphics, resources, board)),
@@ -19,7 +19,7 @@ Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
 	P5(Pawn(Figure::WHITE, 4, 6, graphics, resources, board)),
 	P6(Pawn(Figure::WHITE, 5, 6, graphics, resources, board)),
 	P7(Pawn(Figure::WHITE, 6, 6, graphics, resources, board)),
-	P8(Pawn(Figure::WHITE, 7, 6, graphics, resources, board))
+	P8(Pawn(Figure::WHITE, 7, 2, graphics, resources, board))
 {
 }
 

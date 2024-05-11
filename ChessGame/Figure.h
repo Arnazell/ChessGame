@@ -47,8 +47,7 @@ public:
 	bool clicked;
 	
 
-
-protected:
+public:
 
 	// Dostep do grafiki
 	SFML_manager* graphics;
@@ -72,6 +71,8 @@ protected:
 	// przestrzen ruchow
 	std::vector<sf::Vector2i> m_movement_space;
 
+	// przestrzen ataku
+	std::vector<sf::Vector2i> m_attack_space;
 	// Obraz
 	sf::Texture m_texture;
 
