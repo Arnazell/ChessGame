@@ -23,6 +23,18 @@ void Figure::update()
 	;
 }
 
+void Figure::move(int xind, int yind)
+{
+	// ustaw bierzace pole na planszy na null
+	board->board_state[m_xind + m_yind * 8] = nullptr;
+	
+	m_xind = xind;
+	m_yind = yind;
+
+	setPosition(xind * 128, yind * 128);
+	board->board_state[m_xind + m_yind * 8] = this;
+}
+
 void Figure::print_moves()
 {
 	// Rysowanie kwadratów na podstawie tablicy indeksów

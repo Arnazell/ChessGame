@@ -30,7 +30,6 @@ void Pawn::generate_move_space()
 	m_movement_space.clear();
 	if (m_team== BLACK)
 	{
-		std::cout << "Nla";
 		// generuj ruchy dla czarnych pionkow
 		if (m_yind < 7)
 		{
@@ -40,16 +39,18 @@ void Pawn::generate_move_space()
 				m_movement_space.emplace_back(m_xind, m_yind + 1);
 
 				// jesli tak to sprawdz czy mozna isc dwa
-				if (board->board_state[m_xind + (m_yind + 2) * 8] == nullptr)
+				if (m_yind < 6)
 				{
-					m_movement_space.emplace_back(m_xind, m_yind + 2);
+					if (board->board_state[m_xind + (m_yind + 2) * 8] == nullptr)
+					{
+						m_movement_space.emplace_back(m_xind, m_yind + 2);
+					}
 				}
 			}
 		}
 	}
 	else if (m_team == WHITE)
 	{
-		std::cout << "bialy";
 		// generuj ruchy dla bialych pionkow
 		if (m_yind > 0)
 		{
@@ -59,14 +60,18 @@ void Pawn::generate_move_space()
 				m_movement_space.emplace_back(m_xind, m_yind - 1);
 
 				// jesli tak to sprawdz czy mozna isc 1 w dol
-				if (board->board_state[m_xind + (m_yind - 2) * 8] == nullptr)
+				if (m_yind > 1)
 				{
-					m_movement_space.emplace_back(m_xind, m_yind - 2);
+					if (board->board_state[m_xind + (m_yind - 2) * 8] == nullptr)
+					{
+						m_movement_space.emplace_back(m_xind, m_yind - 2);
+					}
 				}
 			}
+
+			
 		}
 	}
-
 	// wygeneruj mozliwe ataki
 	ganerate_attack_space();
 }
@@ -74,11 +79,11 @@ void Pawn::generate_move_space()
 void Pawn::ganerate_attack_space()
 {
 	m_attack_space.clear();
-	// Ataki bialych
+	// Ataki czarnych
 	if (this->m_team == BLACK)
 	{
 		// gdy pionek jest po lewej
-		if ((m_xind == 0) && (m_yind > 0))
+		if ((m_xind == 0) && (m_yind < 7))
 		{
 			// jesli jakas figura jest w polu ataki
 			if (board->board_state[(m_xind + 1) + (m_yind + 1) * 8])
@@ -92,7 +97,7 @@ void Pawn::ganerate_attack_space()
 		}
 
 		// gdy pionek jest po prawej
-		if ((m_xind == 7) && (m_yind > 0))
+		if ((m_xind == 7) && (m_yind < 7))
 		{
 			// jesli jakas figura jest w polu ataki
 			if (board->board_state[(m_xind - 1) + (m_yind + 1) * 8])
@@ -106,7 +111,7 @@ void Pawn::ganerate_attack_space()
 		}
 
 		// gdy pionek jest na srodku
-		if ((m_xind > 0) && (m_xind < 8) && (m_yind > 0))
+		if ((m_xind > 0) && (m_xind < 8) && (m_yind < 7))
 		{
 			// sprawdz atak na prawe pole
 			if (board->board_state[(m_xind + 1) + (m_yind + 1) * 8])
@@ -130,11 +135,11 @@ void Pawn::ganerate_attack_space()
 		}
 	}
 		
-	// Ataki czarnych
+	// Ataki bielych
 	else if (this->m_team == WHITE)
 	{
 		// gdy pionek jest po lewej
-		if ((m_xind == 0) && (m_yind < 7))
+		if ((m_xind == 0) && (m_yind > 0))
 		{
 			// jesli jakas figura jest w polu ataki
 			if (board->board_state[(m_xind + 1) + (m_yind - 1) * 8])
@@ -148,7 +153,7 @@ void Pawn::ganerate_attack_space()
 		}
 
 		// gdy pionek jest po prawej
-		if ((m_xind == 7) && (m_yind < 7))
+		if ((m_xind == 7) && (m_yind > 0))
 		{
 			// jesli jakas figura jest w polu ataki
 			if (board->board_state[(m_xind - 1) + (m_yind - 1) * 8])
@@ -162,7 +167,7 @@ void Pawn::ganerate_attack_space()
 		}
 
 		// gdy pionek jest na srodku
-		if ((m_xind > 0) && (m_xind < 8) && (m_yind < 7))
+		if ((m_xind > 0) && (m_xind < 8) && (m_yind > 0))
 		{
 			// sprawdz atak na prawe pole
 			if (board->board_state[(m_xind + 1) + (m_yind - 1) * 8])

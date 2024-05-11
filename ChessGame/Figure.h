@@ -38,6 +38,9 @@ public:
 	// generowanie ruchow
 	virtual void generate_move_space() = 0;
 	
+	// ruch
+	void move(int xind, int yind);
+
 	// drukowanie ruchow
 	void print_moves();
 	// Interakcja
