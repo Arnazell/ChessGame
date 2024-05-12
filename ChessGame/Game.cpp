@@ -17,6 +17,7 @@ Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
 	kn2(Knight(Figure::BLACK, 6, 0, graphics, resources, board)),
 	b1(Bishop(Figure::BLACK, 2, 0, graphics, resources, board)),
 	b2(Bishop(Figure::BLACK, 5, 0, graphics, resources, board)),
+	q1(Queen(Figure::BLACK, 4, 0, graphics, resources, board)),
 
 	P1(Pawn(Figure::WHITE, 0, 6, graphics, resources, board)),
 	P2(Pawn(Figure::WHITE, 1, 6, graphics, resources, board)),
@@ -31,7 +32,8 @@ Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
 	KN1(Knight(Figure::WHITE, 1, 7, graphics, resources, board)),
 	KN2(Knight(Figure::WHITE, 6, 7, graphics, resources, board)),
 	B1(Bishop(Figure::WHITE, 2, 7, graphics, resources, board)),
-	B2(Bishop(Figure::WHITE, 5, 7, graphics, resources, board))
+	B2(Bishop(Figure::WHITE, 5, 7, graphics, resources, board)),
+	Q1(Queen(Figure::WHITE, 4, 7, graphics, resources, board))
 {
 }
 
