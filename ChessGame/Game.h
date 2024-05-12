@@ -1,9 +1,11 @@
 #pragma once
 #include "SFML_manager.h"	
 #include "Figure.h"
-#include "Pawn.h"
 #include "Assets.h"
 #include "Board.h"
+
+#include "Pawn.h"
+#include "Rook.h"
 #include <vector>
 
 
@@ -58,6 +60,8 @@ private:
 	Pawn p6;
 	Pawn p7;
 	Pawn p8;
+	Rook r1;
+	Rook r2;
 
 	Pawn P1;
 	Pawn P2;
@@ -67,5 +71,8 @@ private:
 	Pawn P6;
 	Pawn P7;
 	Pawn P8;
+	Rook R1;
+	Rook R2;
+	
 
 };
