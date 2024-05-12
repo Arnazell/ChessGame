@@ -7,6 +7,7 @@
 #include "Pawn.h"
 #include "Rook.h"
 #include "Knight.h"
+#include "Bishop.h"
 #include <vector>
 
 
@@ -65,6 +66,8 @@ private:
 	Rook r2;
 	Knight kn1;
 	Knight kn2;
+	Bishop b1;
+	Bishop b2;
 
 	Pawn P1;
 	Pawn P2;
@@ -78,6 +81,7 @@ private:
 	Rook R2;
 	Knight KN1;
 	Knight KN2;
-	
+	Bishop B1;
+	Bishop B2;
 
 };

@@ -53,7 +53,11 @@ void Knight::generate_move_space()
 			// jesli na wybranym polu jest figura
 			if (board->board_state[move.x + move.y * 8])
 			{
-				m_attack_space.emplace_back(move);
+				// gdy jest przeciwnikiem
+				if (board->board_state[move.x + move.y * 8]->m_team != m_team)
+				{
+					m_attack_space.emplace_back(move);
+				}
 			}
 			else
 			{
