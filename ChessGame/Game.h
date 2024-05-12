@@ -29,6 +29,11 @@ public:
 	// Wybierz figure
 	void select_figure();
 
+	// Gracz
+	enum Player{BLACK, WHITE};
+
+	Player m_player;
+
 private:
 	// Dostep do grafiki
 	SFML_manager* graphics;
@@ -42,6 +47,7 @@ private:
 	// Wybrana figura
 	Figure* selected;
 	
+	// Obecny gracz
 
 	// Figury
 	Pawn p1;

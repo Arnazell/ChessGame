@@ -2,7 +2,7 @@
 #include <iostream>
 
 Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
-	:graphics(graphics), resources(resources), board(board), selected(nullptr),
+	:graphics(graphics), resources(resources), board(board), selected(nullptr), m_player(WHITE),
 	p1(Pawn(Figure::BLACK, 1, 5, graphics, resources, board)),
 	p2(Pawn(Figure::BLACK, 1, 1, graphics, resources, board)),
 	p3(Pawn(Figure::BLACK, 2, 1, graphics, resources, board)),
@@ -17,9 +17,9 @@ Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
 	P3(Pawn(Figure::WHITE, 2, 6, graphics, resources, board)),
 	P4(Pawn(Figure::WHITE, 3, 6, graphics, resources, board)),
 	P5(Pawn(Figure::WHITE, 4, 6, graphics, resources, board)),
-	P6(Pawn(Figure::WHITE, 5, 6, graphics, resources, board)),
+	P6(Pawn(Figure::WHITE, 3, 6, graphics, resources, board)),
 	P7(Pawn(Figure::WHITE, 6, 6, graphics, resources, board)),
-	P8(Pawn(Figure::WHITE, 7, 2, graphics, resources, board))
+	P8(Pawn(Figure::WHITE, 6, 2, graphics, resources, board))
 {
 }
 
@@ -48,34 +48,67 @@ void Game::select_figure()
 	auto position = graphics->mousePosition;
 	int xind = position.x / 128;
 	int yind = position.y / 128;
+	bool correct_move = false;
+
 	// jesli myszka wskazuje na jakies pole
 	if ((xind < 8) && (xind >= 0) && (yind < 8) && (yind>=0))
 	{
 		// jesli byla wybrana figura
 		if (selected)
 		{
-			// sprawdz czy nastapil ruch
-			for (auto move : selected->m_movement_space)
+			// sprawdz czy mozna wykonac ruchu
+			if (selected->m_team == m_player)
 			{
-				if ((move.x == xind) && (move.y == yind))
+				// sprawdz czy nastapil ruch
+				for (auto move : selected->m_movement_space)
 				{
-					selected->move(xind, yind);
+					if ((move.x == xind) && (move.y == yind))
+					{
+						selected->move(xind, yind);
+						correct_move = true;
+					}
+				}
+
+				// sprawdz czy nastapil atak
+				for (auto attack : selected->m_attack_space)
+				{
+					if ((attack.x == xind) && (attack.y == yind))
+					{
+						selected->move(xind, yind);
+						correct_move = true;
+					}
+				}
+				// jesli wykonano ruch zmien gracza
+				if (correct_move)
+				{
+					if (m_player == WHITE)
+					{
+						m_player = BLACK;
+					}
+					else
+					{
+						m_player = WHITE;
+					}
+					selected = nullptr;
 				}
 			}
 
-			// sprawdz czy nastapil atak
-			for (auto attack : selected->m_attack_space)
+		}
+		
+		// jesli wybrano figure
+		if (board->board_state[xind + yind * 8])
+		{
+			// i nalezy ona do gracza
+			if (board->board_state[xind + yind * 8]->m_team == m_player)
 			{
-				if ((attack.x == xind) && (attack.y == yind))
-				{
-					selected->move(xind, yind);
-				}
+				selected = board->board_state[xind + yind * 8];
+				std::cout << "Selected, x: " << xind << " y: " << yind << "\n";
 			}
+		}
+		else
+		{
 			selected = nullptr;
 		}
-	
-		selected = board->board_state[xind + yind * 8];
-		std::cout << "Moved, x: " << xind << " y: " << yind << "\n";
 	
 	}
 }
