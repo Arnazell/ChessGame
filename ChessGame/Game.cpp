@@ -13,6 +13,8 @@ Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
 	p8(Pawn(Figure::BLACK, 7, 1, graphics, resources, board)),
 	r1(Rook(Figure::BLACK, 0, 0, graphics, resources, board)),
 	r2(Rook(Figure::BLACK, 7, 0, graphics, resources, board)),
+	kn1(Knight(Figure::BLACK, 1, 0, graphics, resources, board)),
+	kn2(Knight(Figure::BLACK, 6, 0, graphics, resources, board)),
 
 	P1(Pawn(Figure::WHITE, 0, 6, graphics, resources, board)),
 	P2(Pawn(Figure::WHITE, 1, 6, graphics, resources, board)),
@@ -23,7 +25,9 @@ Game::Game(SFML_manager* graphics, Assets* resources, Board* board)
 	P7(Pawn(Figure::WHITE, 6, 6, graphics, resources, board)),
 	P8(Pawn(Figure::WHITE, 7, 6, graphics, resources, board)),
 	R1(Rook(Figure::WHITE, 0, 7, graphics, resources, board)),
-	R2(Rook(Figure::WHITE, 7, 7, graphics, resources, board))
+	R2(Rook(Figure::WHITE, 7, 7, graphics, resources, board)),
+	KN1(Knight(Figure::WHITE, 1, 7, graphics, resources, board)),
+	KN2(Knight(Figure::WHITE, 6, 7, graphics, resources, board))
 {
 }
 

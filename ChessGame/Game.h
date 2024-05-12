@@ -6,6 +6,7 @@
 
 #include "Pawn.h"
 #include "Rook.h"
+#include "Knight.h"
 #include <vector>
 
 
@@ -62,6 +63,8 @@ private:
 	Pawn p8;
 	Rook r1;
 	Rook r2;
+	Knight kn1;
+	Knight kn2;
 
 	Pawn P1;
 	Pawn P2;
@@ -73,6 +76,8 @@ private:
 	Pawn P8;
 	Rook R1;
 	Rook R2;
+	Knight KN1;
+	Knight KN2;
 	
 
 };
