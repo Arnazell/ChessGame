@@ -5,7 +5,7 @@
 // Notatka: wiele razy ³adujemy t¹ sam¹ teksturê;)
 
 Rook::Rook(Team team, int xind, int yind, SFML_manager* graphics, Assets* resources, Board* board)
-	: Figure(team, xind, yind, PAWN, graphics, resources, board)
+	: Figure(team, xind, yind, ROOK, graphics, resources, board)
 {
 	// inicjalizacja sprite
 	this->setTextureRect(sf::IntRect(0, 0, SIZE, SIZE));

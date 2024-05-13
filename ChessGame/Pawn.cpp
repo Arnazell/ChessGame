@@ -30,6 +30,8 @@ void Pawn::generate_move_space()
 {
 	deocupy_board();
 	m_movement_space.clear();
+	m_optional_attack_space.clear();
+
 	if (m_team== BLACK)
 	{
 		// generuj ruchy dla czarnych pionkow
@@ -94,7 +96,7 @@ void Pawn::ganerate_attack_space()
 			if (board->board_state[(m_xind + 1) + (m_yind + 1) * 8])
 			{
 				// i jesli jest z przeciwnej druzyny
-				if (1)//board->board_state[(m_xind + 1) + (m_yind + 1) * 8]->m_team != this->m_team)
+				if (board->board_state[(m_xind + 1) + (m_yind + 1) * 8]->m_team != this->m_team)
 				{
 					m_attack_space.emplace_back(m_xind + 1, m_yind + 1);
 				}

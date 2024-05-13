@@ -36,7 +36,7 @@ public:
 	virtual void update();
 
 	// generowanie ruchow
-	virtual void generate_move_space() = 0;
+	virtual void generate_move_space();
 	
 	// ruch
 	void move(int xind, int yind);
@@ -81,8 +81,12 @@ public:
 	// przestrzen ruchow
 	std::vector<sf::Vector2i> m_movement_space;
 
-	// przestrzen ataku
+	// przestrzen ataku - ATAKOWANE FIGURY
 	std::vector<sf::Vector2i> m_attack_space;
+
+	// opcjonalna przestrzen ataku - mozliwe do zaatakowania pola (dla pionka)
+	std::vector<sf::Vector2i> m_optional_attack_space;
+
 	// Obraz
 	sf::Texture m_texture;
 

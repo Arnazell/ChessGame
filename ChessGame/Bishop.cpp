@@ -5,7 +5,7 @@
 // Notatka: wiele razy ³adujemy t¹ sam¹ teksturê;)
 
 Bishop::Bishop(Team team, int xind, int yind, SFML_manager* graphics, Assets* resources, Board* board)
-	: Figure(team, xind, yind, PAWN, graphics, resources, board)
+	: Figure(team, xind, yind, BISHOP, graphics, resources, board)
 {
 	// inicjalizacja sprite
 	this->setTextureRect(sf::IntRect(0, 0, SIZE, SIZE));

@@ -23,6 +23,11 @@ void Figure::update()
 	;
 }
 
+void Figure::generate_move_space()
+{
+	;
+}
+
 void Figure::move(int xind, int yind)
 {
 	// ustaw bierzace pole na planszy na null
@@ -33,6 +38,15 @@ void Figure::move(int xind, int yind)
 
 	setPosition(xind * 128, yind * 128);
 	board->board_state[m_xind + m_yind * 8] = this;
+
+	// odswiez wszystkei pionki
+	for (auto figure : board->board_state)
+	{
+		if (figure)
+		{
+			figure->generate_move_space();
+		}
+	}
 }
 
 void Figure::print_moves()
@@ -64,10 +78,20 @@ void Figure::occupy_board()
 {
 	if (this->m_team == WHITE)
 	{
-		// zajmij ruchy
-		for (auto move : m_movement_space)
+		// zajmij ruchy (jesli to pionek to nie)
+		if (this->m_type != PAWN)
 		{
-			board->white_fields[move.x + move.y * 8]++;
+			for (auto move : m_movement_space)
+			{
+				board->white_fields[move.x + move.y * 8]++;
+			}
+		}
+		else if (this->m_type == PAWN)
+		{
+			for (auto optionalatack : m_optional_attack_space)
+			{
+				board->white_fields[optionalatack.x + optionalatack.y * 8]++;
+			}
 		}
 		// zajmij ataki
 		for (auto attack : m_attack_space)
@@ -80,9 +104,19 @@ void Figure::occupy_board()
 	else
 	{
 		// zajmij ruchy
-		for (auto move : m_movement_space)
+		if (this->m_type != PAWN)
 		{
-			board->black_fields[move.x + move.y * 8]++;
+			for (auto move : m_movement_space)
+			{
+				board->black_fields[move.x + move.y * 8]++;
+			}
+		}
+		else if (this->m_type == PAWN)
+		{
+			for (auto optionalatack : m_optional_attack_space)
+			{
+				board->black_fields[optionalatack.x + optionalatack.y * 8]++;
+			}
 		}
 		// zajmij ataki
 		for (auto attack : m_attack_space)
@@ -98,10 +132,20 @@ void Figure::deocupy_board()
 {
 	if (this->m_team == WHITE)
 	{
-		// zajmij ruchy
-		for (auto move : m_movement_space)
+		// ZWOLNIJ ruchy
+		if (this->m_type != PAWN)
 		{
-			board->white_fields[move.x + move.y * 8]--;
+			for (auto move : m_movement_space)
+			{
+				board->white_fields[move.x + move.y * 8]--;
+			}
+		}
+		else if (this->m_type == PAWN)
+		{
+			for (auto optionalatack : m_optional_attack_space)
+			{
+				board->white_fields[optionalatack.x + optionalatack.y * 8]--;
+			}
 		}
 		// zajmij ataki
 		for (auto attack : m_attack_space)
@@ -114,10 +158,21 @@ void Figure::deocupy_board()
 	else
 	{
 		// zajmij ruchy
-		for (auto move : m_movement_space)
+		if (this->m_type != PAWN)
 		{
-			board->black_fields[move.x + move.y * 8]--;
+			for (auto move : m_movement_space)
+			{
+				board->black_fields[move.x + move.y * 8]--;
+			}
 		}
+		else if (this->m_type == PAWN)
+		{
+			for (auto optionalatack : m_optional_attack_space)
+			{
+				board->black_fields[optionalatack.x + optionalatack.y * 8]--;
+			}
+		}
+
 		// zajmij ataki
 		for (auto attack : m_attack_space)
 		{
