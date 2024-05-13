@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include "MainLoop.h"
 #include "SFML_manager.h"
