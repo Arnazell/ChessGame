@@ -33,7 +33,7 @@ void Bishop::generate_move_space()
 	
 
 	// generuj na lewo w gore
-	for (int x = m_xind - 1, y = m_yind - 1; (x >= 0 && x <= 7 && y >= 0 && y <= 7); x--, y--)
+	for (int x = m_xind - 1, y = m_yind - 1; (x >= 0 && y >= 0); x--, y--)
 	{
 		// jesli na danym polu stala figura
 		if (board->board_state[x + y * 8])
@@ -53,7 +53,7 @@ void Bishop::generate_move_space()
 
 
 	// generuj na prawo w gore
-	for (int x = m_xind + 1, y = m_yind - 1; (x >= 0 && x <= 7 && y >= 0 && y <= 7); x++, y--)
+	for (int x = m_xind + 1, y = m_yind - 1; (x >= 0 && y >= 0); x++, y--)
 	{
 		// jesli na danym polu stala figura
 		if (board->board_state[x + y * 8])
@@ -72,7 +72,7 @@ void Bishop::generate_move_space()
 	}
 
 	// generuj na prawo w dol
-		for (int x = m_xind + 1, y = m_yind + 1; (x >= 0 && x <= 7 && y >= 0 && y <= 7); x++, y++)
+		for (int x = m_xind + 1, y = m_yind + 1; (x <= 7 && y <= 7); x++, y++)
 		{
 			// jesli na danym polu stala figura
 			if (board->board_state[x + y * 8])
@@ -92,7 +92,7 @@ void Bishop::generate_move_space()
 
 
 		// generuj na lewo w dol
-		for (int x = m_xind - 1, y = m_yind + 1; (x >= 0 && x <= 7 && y >= 0 && y <= 7); x--, y++)
+		for (int x = m_xind - 1, y = m_yind + 1; (x <= 7 && y <= 7); x--, y++)
 		{
 			// jesli na danym polu stala figura
 			if (board->board_state[x + y * 8])
