@@ -23,8 +23,6 @@ Bishop::Bishop(Team team, int xind, int yind, SFML_manager* graphics, Assets* re
 
 	this->setTexture(m_texture);
 
-	//generuj ruchy
-	generate_move_space();
 }
 
 void Bishop::generate_move_space()

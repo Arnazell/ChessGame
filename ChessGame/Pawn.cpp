@@ -23,8 +23,6 @@ Pawn::Pawn(Team team, int xind, int yind, SFML_manager* graphics, Assets* resour
 	
 	this->setTexture(m_texture);
 
-	// zajmij plansze
-	generate_move_space();
 	
 }
 

@@ -131,6 +131,16 @@ void Game::select_figure()
 	
 	}
 }
+void Game::init()
+{
+	for (auto figure : board->board_state)
+	{
+		if (figure)
+		{
+			figure->generate_move_space();
+		}
+	}
+}
 void Game::update()
 {
 	// jesli zaden pionek nie zostal wybrany

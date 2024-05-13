@@ -24,7 +24,7 @@ void Chess::run()
 
     // Zarzadzanie gra
     Game game(&graphics, &assets, &board);
-
+    game.init();
 
 	// Stan gry
 	bool quit = false;

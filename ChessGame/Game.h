@@ -26,6 +26,7 @@ public:
 	// Destruktor
 	//~Game();
 
+
 	// Drukuj figury
 	void draw_figures();
 
@@ -35,6 +36,8 @@ public:
 	// Wybierz figure
 	void select_figure();
 
+	// Inicjuj (g³ównie generuj ruchy figur dla 0 ruchu (gdy kazda figura generowala je w konstruktorze, byl bug)
+	void init();
 	// Gracz
 	enum Player{BLACK, WHITE};
 

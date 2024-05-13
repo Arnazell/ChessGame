@@ -23,8 +23,7 @@ Queen::Queen(Team team, int xind, int yind, SFML_manager* graphics, Assets* reso
 
 	this->setTexture(m_texture);
 
-	// generuj ruchy
-	generate_move_space();
+
 }
 
 void Queen::generate_move_space()

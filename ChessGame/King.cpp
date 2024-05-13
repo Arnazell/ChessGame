@@ -23,8 +23,6 @@ King::King(Team team, int xind, int yind, SFML_manager* graphics, Assets* resour
 
 	this->setTexture(m_texture);
 
-	// generuj ruchy
-	generate_move_space();
 }
 
 void King::generate_move_space()
