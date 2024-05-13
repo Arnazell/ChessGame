@@ -11,7 +11,7 @@
 #include "Queen.h"
 #include "King.h"
 #include <vector>
-
+#include <thread>
 
 // -------------------------------------------------------------------------------------------------------
 // klasa zarzadzajaca gr¹
@@ -33,15 +33,19 @@ public:
 	// Uaktualij gre
 	void update();
 
+	// Koniec gry
+	void end();
+
 	// Wybierz figure
 	void select_figure();
 
 	// Inicjuj (g³ównie generuj ruchy figur dla 0 ruchu (gdy kazda figura generowala je w konstruktorze, byl bug)
 	void init();
+
 	// Gracz
 	enum Player{BLACK, WHITE};
-
 	Player m_player;
+
 
 private:
 	// Dostep do grafiki

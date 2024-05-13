@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 // -------------------------------------------------------------------------------------------------------
 // klasa przechowuj¹ca dane  - glownie tekstury
@@ -19,6 +20,9 @@ public:
 	// ladowanie tekstur
 	void textureLoad();
 
+	// ladowanie dŸwiêkow
+	void audioLoad();
+
 	// tekstury
 	sf::Texture texture_pawn_white;
 	sf::Texture texture_pawn_black;
@@ -37,4 +41,6 @@ public:
 
 	sf::Texture texture_king_white;
 	sf::Texture texture_king_black;
+
+	sf::Music end_of_the_game_song;
 };

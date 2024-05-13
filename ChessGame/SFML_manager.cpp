@@ -1,5 +1,6 @@
 #include "SFML_manager.h"
 
+
 #include <iostream>
 // --------------------------------------------------------------------------------------
 // Inicjalizacja
@@ -64,6 +65,19 @@ void SFML_manager::setBrightnes(sf::Texture& texture, float factor)
 
     // Zapisz zmodyfikowane piksele z powrotem do tekstury
     texture.update(image);
+}
+
+void SFML_manager::playMusic(sf::Music &sound)
+{
+    // Odtwórz dŸwiêk
+    sound.play();
+
+    // Pêtla programu, aby utrzymaæ dŸwiêk w odtwarzaczu
+    while (sound.getStatus() == sf::Music::Playing)
+    {
+        // Pauza na chwilê, aby unikn¹æ przeci¹¿enia procesora
+        sf::sleep(sf::milliseconds(100));
+    }
 }
 
 

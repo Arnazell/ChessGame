@@ -164,3 +164,11 @@ void Game::update()
 		}
 	}
 }
+
+void Game::end()
+{
+	//std::thread MusicThread(graphics, graphics, resources->end_of_the_game_song);
+	std::string winner = m_player == WHITE ? "Black" : "White";
+	std::cout << "KONIEC GRY!! WYGRYWA GRACZ: " << winner << "\n\n";
+	//sf::sleep(sf::seconds(1));
+}

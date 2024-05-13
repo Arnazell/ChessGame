@@ -1,7 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
+
 #include <optional>
+#include <thread>
+
 
 // --------------------------------------------------------------------------------------
 // Klasa zarz¹dzaj¹ca grafik¹ - generuje okna, ³aduje pliki, 
@@ -33,7 +37,6 @@ public:
 	// Klikniecie
 	bool LPMclick;
 
-
 	// Inicjalizuje okno
 	void init();
 
@@ -42,5 +45,8 @@ public:
 	
 	// Zmienia jasnosc tekstury
 	void setBrightnes(sf::Texture& texture, float factor);
+
+	// Odtwarza muzyke na innym watku
+	void playMusic(sf::Music &sound);
 
 };

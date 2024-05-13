@@ -46,10 +46,16 @@ void Chess::run()
         // aktualizacja
         graphics.update();
         game.update();
-
+        
         // Rysowanie figur
         game.draw_figures();
 
+        // sprawdzenie warunku
+        if (board.check_check())
+        {
+            game.end();
+            quit = true;
+        }
         // Wyswietlenie wszyskiego na ekranie
         graphics.window.display();
 	}

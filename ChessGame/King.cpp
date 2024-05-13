@@ -48,21 +48,41 @@ void King::generate_move_space()
 
 	for (auto move : moverules)
 	{
-		// jesli ruch miesci sie w planszy
-		if ((move.x >= 0) && (move.x < 8) && (move.y >= 0) && (move.y < 8))
+		// jesli ruch jest zgodny z zasadami
+		if ((move.x >= 0) && (move.x <= 7) && (move.y >= 0) && (move.y <= 7))
 		{
-			// jesli na wybranym polu jest figura
-			if (board->board_state[move.x + move.y * 8])
+			// przy gnerowwawaniu uchoww wzglednij tylko te na niezajetych przez wroga polach
+			bool friendly_area = true;
+			if (this->m_team == WHITE)
 			{
-				// gdy jest przeciwnikiem
-				if (board->board_state[move.x + move.y * 8]->m_team != m_team)
+				if (board->black_fields[move.x + move.y * 8] != 0)
 				{
-					m_attack_space.emplace_back(move);
+					friendly_area = false;
 				}
 			}
-			else
+			else if (this->m_team == BLACK)
 			{
-				m_movement_space.emplace_back(move);
+				if (board->white_fields[move.x + move.y * 8] != 0)
+				{
+					friendly_area = false;
+				}
+			}
+			// jesli ruch nie wystawia krola na bicie - obszr jest bezpieczny
+			if (friendly_area)
+			{
+				// jesli na wybranym polu jest figura
+				if (board->board_state[move.x + move.y * 8])
+				{
+					// gdy jest przeciwnikiem
+					if (board->board_state[move.x + move.y * 8]->m_team != m_team)
+					{
+						m_attack_space.emplace_back(move);
+					}
+				}
+				else
+				{
+					m_movement_space.emplace_back(move);
+				}
 			}
 		}
 	}

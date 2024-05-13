@@ -4,7 +4,7 @@
 #define tileSize 128
 
 Board::Board(SFML_manager* graphics)
-    : graphics(graphics)
+    : graphics(graphics), check(false)
 {
     //Inicjalizacja pustej planszy
     for (auto field : board_state)
@@ -75,4 +75,45 @@ void Board::drawFields()
         std::cout << "\n";
 
     }
+}
+
+bool Board::check_check()
+{
+    // przeszukaj kazde atakowane pola bialego gracza
+    for (int j = 0; j < 8; j++)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if (white_fields[i + j * 8] != 0)
+            {
+                if (board_state[i + j * 8])
+                {
+                    if (board_state[i + j * 8]->m_type == KING)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    // przeszukaj kazde atakowane pola bialego gracza
+    for (int j = 0; j < 8; j++)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if (black_fields[i + j * 8] != 0)
+            {
+                if (board_state[i + j * 8])
+                {
+                    if (board_state[i + j * 8]->m_type == KING)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    return false;
 }

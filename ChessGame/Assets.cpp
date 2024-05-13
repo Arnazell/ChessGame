@@ -8,6 +8,7 @@ Assets::Assets()
 void Assets::init()
 {
 	textureLoad();
+	audioLoad();
 }
 
 void Assets::textureLoad() 
@@ -29,4 +30,9 @@ void Assets::textureLoad()
 
 	texture_king_white.loadFromFile("Res/white-king.png");
 	texture_king_black.loadFromFile("Res/black-king.png");
+}
+
+void Assets::audioLoad()
+{
+	end_of_the_game_song.openFromFile("Res/sound01.mp3");
 }
