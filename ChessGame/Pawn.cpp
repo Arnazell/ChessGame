@@ -101,6 +101,11 @@ void Pawn::ganerate_attack_space()
 					m_attack_space.emplace_back(m_xind + 1, m_yind + 1);
 				}
 			}
+			// jesli nie ma, to wciaz to pole jest pod atakiem
+			else
+			{
+				m_optional_attack_space.emplace_back(m_xind + 1, m_yind + 1);
+			}
 		}
 
 		// gdy pionek jest po prawej
@@ -115,10 +120,15 @@ void Pawn::ganerate_attack_space()
 					m_attack_space.emplace_back(m_xind - 1, m_yind + 1);
 				}
 			}
+			// jesli nie ma, to wciaz to pole jest pod atakiem
+			else
+			{
+				m_optional_attack_space.emplace_back(m_xind - 1, m_yind + 1);
+			}
 		}
 
 		// gdy pionek jest na srodku
-		if ((m_xind > 0) && (m_xind < 8) && (m_yind < 7))
+		if ((m_xind > 0) && (m_xind < 7) && (m_yind < 7))
 		{
 			// sprawdz atak na prawe pole
 			if (board->board_state[(m_xind + 1) + (m_yind + 1) * 8])
@@ -129,6 +139,11 @@ void Pawn::ganerate_attack_space()
 					m_attack_space.emplace_back(m_xind + 1, m_yind + 1);
 				}
 			}
+			// jesli nie ma, to wciaz to pole jest pod atakiem
+			else
+			{
+				m_optional_attack_space.emplace_back(m_xind + 1, m_yind + 1);
+			}
 
 			// sprawdz atak na lewe pole
 			if (board->board_state[(m_xind - 1) + (m_yind + 1) * 8])
@@ -138,6 +153,11 @@ void Pawn::ganerate_attack_space()
 				{
 					m_attack_space.emplace_back(m_xind - 1, m_yind + 1);
 				}
+			}
+			// jesli nie ma figury, to wciaz to pole jest pod atakiem
+			else
+			{
+				m_optional_attack_space.emplace_back(m_xind - 1, m_yind + 1);
 			}
 		}
 	}
@@ -157,6 +177,11 @@ void Pawn::ganerate_attack_space()
 					m_attack_space.emplace_back(m_xind + 1, m_yind - 1);
 				}
 			}
+			// jesli nie ma figury, to wciaz to pole jest pod atakiem
+			else
+			{
+				m_optional_attack_space.emplace_back(m_xind + 1, m_yind - 1);
+			}
 		}
 
 		// gdy pionek jest po prawej
@@ -170,6 +195,11 @@ void Pawn::ganerate_attack_space()
 				{
 					m_attack_space.emplace_back(m_xind - 1, m_yind - 1);
 				}
+			}
+			// jesli nie ma figury, to wciaz to pole jest pod atakiem
+			else
+			{
+				m_optional_attack_space.emplace_back(m_xind - 1, m_yind - 1);
 			}
 		}
 
@@ -185,6 +215,11 @@ void Pawn::ganerate_attack_space()
 					m_attack_space.emplace_back(m_xind + 1, m_yind - 1);
 				}
 			}
+			// jesli nie ma figury, to wciaz to pole jest pod atakiem
+			else
+			{
+				m_optional_attack_space.emplace_back(m_xind + 1, m_yind - 1);
+			}
 
 			// sprawdz atak na lewe pole
 			if (board->board_state[(m_xind - 1) + (m_yind - 1) * 8])
@@ -194,6 +229,11 @@ void Pawn::ganerate_attack_space()
 				{
 					m_attack_space.emplace_back(m_xind - 1, m_yind - 1);
 				}
+			}
+			// jesli nie ma figury, to wciaz to pole jest pod atakiem
+			else
+			{
+				m_optional_attack_space.emplace_back(m_xind - 1, m_yind - 1);
 			}
 		}
 	}
