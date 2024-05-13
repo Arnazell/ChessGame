@@ -23,10 +23,13 @@ King::King(Team team, int xind, int yind, SFML_manager* graphics, Assets* resour
 
 	this->setTexture(m_texture);
 
+	// generuj ruchy
+	generate_move_space();
 }
 
 void King::generate_move_space()
 {
+	deocupy_board();
 	m_attack_space.clear();
 	m_movement_space.clear();
 
@@ -65,6 +68,7 @@ void King::generate_move_space()
 			}
 		}
 	}
+	occupy_board();
 }
 
 void King::ganerate_attack_space()

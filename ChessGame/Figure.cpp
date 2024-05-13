@@ -60,6 +60,74 @@ void Figure::print_moves()
 
 }
 
+void Figure::occupy_board()
+{
+	if (this->m_team == WHITE)
+	{
+		// zajmij ruchy
+		for (auto move : m_movement_space)
+		{
+			board->white_fields[move.x + move.y * 8]++;
+		}
+		// zajmij ataki
+		for (auto attack : m_attack_space)
+		{
+			board->white_fields[attack.x + attack.y * 8]++;
+		}
+		system("cls");
+		board->drawFields();
+	}
+	else
+	{
+		// zajmij ruchy
+		for (auto move : m_movement_space)
+		{
+			board->black_fields[move.x + move.y * 8]++;
+		}
+		// zajmij ataki
+		for (auto attack : m_attack_space)
+		{
+			board->black_fields[attack.x + attack.y * 8]++;
+		}
+		system("cls");
+		board->drawFields();
+	}
+}
+
+void Figure::deocupy_board()
+{
+	if (this->m_team == WHITE)
+	{
+		// zajmij ruchy
+		for (auto move : m_movement_space)
+		{
+			board->white_fields[move.x + move.y * 8]--;
+		}
+		// zajmij ataki
+		for (auto attack : m_attack_space)
+		{
+			board->white_fields[attack.x + attack.y * 8]--;
+		}
+		system("cls");
+		board->drawFields();
+	}
+	else
+	{
+		// zajmij ruchy
+		for (auto move : m_movement_space)
+		{
+			board->black_fields[move.x + move.y * 8]--;
+		}
+		// zajmij ataki
+		for (auto attack : m_attack_space)
+		{
+			board->black_fields[attack.x + attack.y * 8]--;
+		}
+		system("cls");
+		board->drawFields();
+	}
+}
+
 void Figure::click()
 {
 	if (m_type != NONE)

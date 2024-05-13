@@ -23,10 +23,13 @@ Queen::Queen(Team team, int xind, int yind, SFML_manager* graphics, Assets* reso
 
 	this->setTexture(m_texture);
 
+	// generuj ruchy
+	generate_move_space();
 }
 
 void Queen::generate_move_space()
 {
+	deocupy_board();
 	m_movement_space.clear();
 	m_attack_space.clear();
 
@@ -189,6 +192,8 @@ void Queen::generate_move_space()
 			}
 		}
 	}
+
+	occupy_board();
 }
 
 void Queen::ganerate_attack_space()

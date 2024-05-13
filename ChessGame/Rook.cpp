@@ -23,10 +23,13 @@ Rook::Rook(Team team, int xind, int yind, SFML_manager* graphics, Assets* resour
 
 	this->setTexture(m_texture);
 
+	// generuj ruchy
+	generate_move_space();
 }
 
 void Rook::generate_move_space()
 {
+	deocupy_board();
 	m_movement_space.clear();
 	m_attack_space.clear();
 
@@ -106,6 +109,7 @@ void Rook::generate_move_space()
 		}
 	}
 
+	occupy_board();
 }
 
 void Rook::ganerate_attack_space()

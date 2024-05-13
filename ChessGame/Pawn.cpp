@@ -22,11 +22,15 @@ Pawn::Pawn(Team team, int xind, int yind, SFML_manager* graphics, Assets* resour
 	}
 	
 	this->setTexture(m_texture);
+
+	// zajmij plansze
+	generate_move_space();
 	
 }
 
 void Pawn::generate_move_space()
 {
+	deocupy_board();
 	m_movement_space.clear();
 	if (m_team== BLACK)
 	{
@@ -74,6 +78,9 @@ void Pawn::generate_move_space()
 	}
 	// wygeneruj mozliwe ataki
 	ganerate_attack_space();
+
+	// zajmij plansze
+	occupy_board();
 }
 
 void Pawn::ganerate_attack_space()

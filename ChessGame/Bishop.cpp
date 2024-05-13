@@ -23,10 +23,13 @@ Bishop::Bishop(Team team, int xind, int yind, SFML_manager* graphics, Assets* re
 
 	this->setTexture(m_texture);
 
+	//generuj ruchy
+	generate_move_space();
 }
 
 void Bishop::generate_move_space()
 {
+	deocupy_board();
 	m_movement_space.clear();
 	m_attack_space.clear();
 	
@@ -108,7 +111,7 @@ void Bishop::generate_move_space()
 				m_movement_space.emplace_back(x, y);
 			}
 		}
-	
+		occupy_board();
 }
 
 void Bishop::ganerate_attack_space()

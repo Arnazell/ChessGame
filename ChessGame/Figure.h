@@ -43,6 +43,13 @@ public:
 
 	// drukowanie ruchow
 	void print_moves();
+
+	// zajmowanie planszy
+	void occupy_board();
+
+	// odblokowywanie planszy
+	void deocupy_board();
+
 	// Interakcja
 	void click();
 	void unclick();

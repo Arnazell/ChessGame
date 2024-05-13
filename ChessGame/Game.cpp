@@ -81,6 +81,7 @@ void Game::select_figure()
 					if ((move.x == xind) && (move.y == yind))
 					{
 						selected->move(xind, yind);
+						selected->generate_move_space();
 						correct_move = true;
 					}
 				}
@@ -91,7 +92,8 @@ void Game::select_figure()
 					if ((attack.x == xind) && (attack.y == yind))
 					{
 						selected->move(xind, yind);
-						correct_move = true;
+						selected->generate_move_space();
+;						correct_move = true;
 					}
 				}
 				// jesli wykonano ruch zmien gracza
@@ -106,6 +108,7 @@ void Game::select_figure()
 						m_player = WHITE;
 					}
 					selected = nullptr;
+
 				}
 			}
 
