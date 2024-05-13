@@ -98,7 +98,7 @@ void Figure::occupy_board()
 		{
 			board->white_fields[attack.x + attack.y * 8]++;
 		}
-		system("cls");
+		//system("cls");
 		board->drawFields();
 	}
 	else
@@ -123,7 +123,7 @@ void Figure::occupy_board()
 		{
 			board->black_fields[attack.x + attack.y * 8]++;
 		}
-		system("cls");
+		//system("cls");
 		board->drawFields();
 	}
 }
@@ -152,7 +152,7 @@ void Figure::deocupy_board()
 		{
 			board->white_fields[attack.x + attack.y * 8]--;
 		}
-		system("cls");
+		//system("cls");
 		board->drawFields();
 	}
 	else
@@ -178,7 +178,7 @@ void Figure::deocupy_board()
 		{
 			board->black_fields[attack.x + attack.y * 8]--;
 		}
-		system("cls");
+		//system("cls");
 		board->drawFields();
 	}
 }
