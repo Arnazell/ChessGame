@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "SFML_manager.h"
+#include "SFMLmanager.h"
 #include "Assets.h"
 #include "Board.h"
 

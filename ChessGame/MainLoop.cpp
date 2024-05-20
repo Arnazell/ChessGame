@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "MainLoop.h"
-#include "SFML_manager.h"
+#include "SFMLmanager.h"
 #include "Game.h"
 #include "Assets.h"
 #include "Board.h"

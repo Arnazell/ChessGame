@@ -1,4 +1,4 @@
-#include "SFML_manager.h"
+#include "SFMLmanager.h"
 
 
 #include <iostream>
@@ -7,8 +7,8 @@
 // --------------------------------------------------------------------------------------
 void SFML_manager::init()
 {
-	window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), APPNAME);
-	window.setFramerateLimit(60);
+    window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), APPNAME);
+    window.setFramerateLimit(60);
     LPMblocked = false;
 }
 
@@ -33,7 +33,7 @@ void SFML_manager::update()
         LPMclick = false;
         LPMblocked = false;
     }
-        
+
 }
 
 void SFML_manager::setBrightnes(sf::Texture& texture, float factor)
@@ -41,7 +41,7 @@ void SFML_manager::setBrightnes(sf::Texture& texture, float factor)
     std::cout << "hej";
     // Pobierz rozmiar tekstury
     sf::Vector2u textureSize = texture.getSize();
-   
+
     // Utwórz obiekt sf::Image, aby uzyskaæ dostêp do pikseli tekstury
     sf::Image image = texture.copyToImage();
 
@@ -57,7 +57,7 @@ void SFML_manager::setBrightnes(sf::Texture& texture, float factor)
             pixel.r = 50;
             pixel.g = 9;
             pixel.b = 89;
-    
+
             // Zapisz nowy kolor piksela
             image.setPixel(x, y, pixel);
         }
@@ -67,7 +67,7 @@ void SFML_manager::setBrightnes(sf::Texture& texture, float factor)
     texture.update(image);
 }
 
-void SFML_manager::playMusic(sf::Music &sound)
+void SFML_manager::playMusic(sf::Music& sound)
 {
     // Odtwórz dŸwiêk
     sound.play();

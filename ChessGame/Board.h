@@ -1,5 +1,5 @@
 #pragma once
-#include "SFML_manager.h"
+#include "SFMLmanager.h"
 #include "Array"
 #include "Figure.h"
 

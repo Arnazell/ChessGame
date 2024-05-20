@@ -2,16 +2,16 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
-
 #include <optional>
 #include <thread>
+#include "API.h"
 
 
 // --------------------------------------------------------------------------------------
 // Klasa zarz¹dzaj¹ca grafik¹ - generuje okna, ³aduje pliki, 
 // --------------------------------------------------------------------------------------
 
-class SFML_manager
+class EXPORT_API SFML_manager
 {
 public:
 	// Screen seetings
@@ -42,11 +42,11 @@ public:
 
 	// Update
 	void update();
-	
+
 	// Zmienia jasnosc tekstury
 	void setBrightnes(sf::Texture& texture, float factor);
 
 	// Odtwarza muzyke na innym watku
-	void playMusic(sf::Music &sound);
+	void playMusic(sf::Music& sound);
 
 };

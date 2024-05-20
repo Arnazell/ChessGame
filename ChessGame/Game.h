@@ -1,5 +1,5 @@
 #pragma once
-#include "SFML_manager.h"	
+#include "SFMLmanager.h"	
 #include "Figure.h"
 #include "Assets.h"
 #include "Board.h"
