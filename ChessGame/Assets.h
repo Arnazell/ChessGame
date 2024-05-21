@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <optional>
+#include <iostream>
 
 // -------------------------------------------------------------------------------------------------------
 // klasa przechowuj¹ca dane  - glownie tekstury
